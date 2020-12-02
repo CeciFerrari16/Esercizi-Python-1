@@ -1,4 +1,4 @@
-# Esercizio 1 , Gara studenti
+# Esercizio 28 , Gara studenti
 ''' Dato un elenco di studenti partecipanti a una gara sportiva di lancio del peso (nome utente, lancio ),
 visualizza il valore del lancio del vincitore ( valore massimo)'''
 
