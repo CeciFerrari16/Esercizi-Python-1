@@ -9,21 +9,25 @@ La rappresentazione binaria del numero decimale è costituita da cifre binarie o
 lette in ordine inverso. Confronta poi il risultato con il valore ottenuto dalla funzione predefinita 
 del linguaggio per convertire un numero decimale in binario. 
 '''
+import math
+
 num = int(input("Qual è il numero decimale da trasformare? "))
 n = num
 binario = [] #lista con tutti i resti delle divisioni
 quoziente = 1
 while True:
-    if num == 0 or quoziente == 0:
+    if num < 1 or quoziente < 1:
         break
     elif quoziente <= num:
-        quoziente = round(num / 2)
-        resto = num%2
+        math.trunc(num)/ math.trunc(quoziente)
+        quoziente = num / 2
+        resto = math.trunc(num)%2
         binario.append(resto)
         num = quoziente
     else:
-        num = round(quoziente / 2)
-        resto = quoziente%2
+        math.trunc(num)/ math.trunc(quoziente)
+        num = quoziente / 2
+        resto = math.trunc(quoziente)%2
         binario.append(resto)
         quoziente = num
 
@@ -33,12 +37,12 @@ print(binario)
 # controllo
 bin = int(input("Puoi riscivere il numero binario che è risultato? "))
 controllo = int(str(bin), base=2) #numero decimale
-print(controllo)
 if n == controllo:
     print("Il programma funzionaaa!!")
     print("Il numero è", bin)
 else:
     print("I numeri non coincidono, qualcosa è andato storto!")
 
-# Nel provare ho notato che i numeri dal 290 in su sono sbagliati
-# Probabilmente è dovuto ad errori di approssimazione
+# Ho cambiato la funzione round() con trunc() 
+# Funziona perchè la funzione trunc() tronca tutta la parte decimale del numero e non lo approssima mai per eccesso
+# Invece la funzione round() approssimava i numeri come "37.5" a "38" e questo genera un errore nel calcolo del resto
